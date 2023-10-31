@@ -5,7 +5,17 @@ def list_to_dict(input_list):
     `input_list` is a value, and the corresponding key is the numerical 
     index of that element in `input_list`. 
     '''
-    pass
+    a = 0
+    dict1 = {}
+    for i in input_list:
+        dict1.setdefault(a,i)
+        a = a + 1
+    return dict1
+    
+    ###output_dict = {}
+    ###for n,item in enumerate(input_list):
+    ######output_dict[n] = item
+    ###return output_dict   
 
 
 
