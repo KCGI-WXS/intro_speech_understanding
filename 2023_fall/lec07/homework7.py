@@ -63,7 +63,7 @@ def synthesize_vowel(duration,F0,F1,F2,F3,F4,BW1,BW2,BW3,BW4,Fs):
     speech (np.ndarray(samples)) - synthesized vowel
     '''
 
-    speech = np.zeros(duration) # change this
+    speech = np.zeros(duration) 
     excitation = voiced_excitation(duration, F0, Fs)
     y1 = resonator(excitation, F1, BW1, Fs)
     y2 = resonator(y1, F2, BW2, Fs)
