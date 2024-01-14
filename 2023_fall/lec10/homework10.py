@@ -22,7 +22,7 @@ def waveform_to_frames(waveform, frame_length, step):
 
     speech_frames = np.zeros((frame_length, num_frames))
     for frame in range(num_frames):
-        speech_frames[:,frame] = waveformspeech[frame*step:frame*step+frame_length]
+        speech_frames[:,frame] = waveform[frame*step:frame*step+frame_length]
         
     return speech_frames
 
@@ -37,7 +37,7 @@ def frames_to_stft(frames):
     @returns:
     stft (np.ndarray((frame_length,num_frames))) - the STFT (complex-valued)
     '''
-    stft = np.fft.fft(frames.axis == 0)
+    stft = np.fft.fft(frames,axis = 0)
     return stft
 
 def stft_to_spectrogram(stft):
@@ -56,7 +56,7 @@ def stft_to_spectrogram(stft):
     np.amax(spectrogram) should be 0dB.
     np.amin(spectrogram) should be no smaller than -60dB.
     '''
-    mstft = np.abs(speech_stft)
+    mstft = np.abs(stft)
     speech_spectrogram = 20*np.log10(np.maximum(0.001,mstft/np.amax(mstft)))
     return speech_spectrogram
 
